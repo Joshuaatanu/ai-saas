@@ -5,12 +5,7 @@ import Image from "next/image";
 export default function DashboardPage() {
   return (
     <div>
-      <p>dashboard page (Protected) </p>
-      <UserButton afterSignOutUrl="/" />
-
-      <div className="flex items-center justify-center">
-        {/* <UserProfile /> */}
-      </div>
+      <p>Dashboard page (Protected) </p>
     </div>
   );
 }
