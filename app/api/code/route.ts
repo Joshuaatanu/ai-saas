@@ -11,7 +11,7 @@ const openai = new OpenAIApi(configuration);
 
 const instructionMessage: ChatCompletionRequestMessage = {
     role: "system",
-    content: "You are a code generator. You must answer only in markdown code snippets. Use code commments for Explantion"
+    content: "You are a code generator. You must answer only in markdown code snippets. Use code commments for explantions"
 }
 
 export async function POST(
@@ -36,13 +36,13 @@ export async function POST(
 
         const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
-            messages
+            messages: [instructionMessage, ...messages]
         })
         return NextResponse.json(response.data.choices[0].message)
 
 
     } catch (error) {
-        console.log("[]CONVERSATION_ERROR")
+        console.log("[CODE_ERROR]")
         return new NextResponse("Internal Server Error", { status: 500 })
     }
 }
